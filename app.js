@@ -1,6 +1,8 @@
 let flag = document.getElementById("displayTable");
+let found = document.getElementById("notFound");
 
 flag.style.display = "none";
+found.style.display = "none";
 
 document.getElementById("search").addEventListener("click", function (e) {
   let handle = document.getElementById("handle").value;
@@ -16,11 +18,9 @@ document.getElementById("search").addEventListener("click", function (e) {
 
 const display = (data) => {
   if (data.status === "FAILED") {
-    let h3 = document.createElement("h3");
-    h3.innerText = "User Not Found";
-    h3.classList.add("text-center");
-    document.getElementById("displayData").appendChild(h3);
+    found.style.display = "block";
   } else {
+    found.style.display = "none";
     data.result.reverse();
     flag.style.display = "table";
     document.getElementById("tbody").innerHTML = "";
